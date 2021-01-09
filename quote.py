@@ -13,6 +13,7 @@ def get_quote():
     qdct = {"quote": resp["body"], "author": resp["author"]}
     with open("template.html", "r") as f:
         tmpl = Template(f.read())
+    qdct['text'] = f'{resp["body"]} - {resp["author"]}'
     html = tmpl.substitute(qdct)
     qdct['html'] = html
     qdct["email"] = {
