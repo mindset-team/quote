@@ -13,14 +13,12 @@ def get_quote():
     qdct = {"quote": resp["body"], "author": resp["author"]}
     with open("template.html", "r") as f:
         tmpl = Template(f.read())
-    qdct['text'] = f'{resp["body"]} - {resp["author"]}'
+    text = f'{resp["body"]}\n - {resp["author"]}'
     html = tmpl.substitute(qdct)
-    qdct['html'] = html
-    qdct["email"] = {
-        "subject": "you've got a quote!",
-        "plain": f'{resp["body"]}\n - {resp["author"]}',
-        "html": html
-    }
+    qdct |= {"html": html, 
+             "text": text, 
+             "email": {"subj": "you've got a quote!", "plain": text, "html": html}
+            }
     return qdct
 
 if __name__ == "__main__":  # Local testing
