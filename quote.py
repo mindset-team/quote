@@ -16,11 +16,14 @@ def get_quote():
         tmpl = Template(f.read())
     text = f'{qdct["quote"]}\n - {qdct["author"]}'
     html = tmpl.substitute(qdct)
-    qdct["html"] = html
-    qdct["email"] = {
-        "subject": "you've got a quote!",
-        "plain": text,
+    qdct |= {
         "html": html,
+        "text": text,
+        "email": {
+            "subject": "you've got a quote!",
+            "plain": text,
+            "html": html,
+        },
     }
     return qdct
 
