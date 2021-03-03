@@ -25,7 +25,7 @@ def get_quote():
             "html": html,
         },
     }
-    return qdct
+    return {**qdct, "try": None}
 
 
 if __name__ == "__main__":  # Local testing
