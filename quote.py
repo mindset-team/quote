@@ -11,7 +11,7 @@ QUOTE_URL = "https://api.quotable.io/random"
 
 def get_quote():
     resp = requests.get(QUOTE_URL).json()
-    qdct = {"quote": resp["content"], "author": resp["author"], "utc_time": f"{dt.utcnow().isoformat()[:-6]}Z"}
+    qdct = {"quote": resp["content"], "author": resp["author"], "utc_time": f"{dt.utcnow().isoformat()[:-7]}Z"}
     with open("template.html", "r") as f:
         tmpl = Template(f.read())
     text = f'{qdct["quote"]}\n - {qdct["author"]}'
