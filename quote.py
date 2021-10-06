@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# dev branch
+
 from datetime import datetime as dt
 from pprint import pprint
 from string import Template
@@ -27,6 +29,8 @@ def get_quote():
     }
     return qdct
 
+def dev_branch_demo():
+    return "demo"
 
 if __name__ == "__main__":  # Local testing
     pprint(get_quote())
