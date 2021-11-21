@@ -9,6 +9,7 @@ import requests
 QUOTE_URL = "https://api.quotable.io/random"
 
 
+
 def get_quote():
     print(QUOTE_URL)
     resp = requests.get(QUOTE_URL).json()
